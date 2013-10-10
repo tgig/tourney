@@ -1,0 +1,15 @@
+<h1>Preview Scorecard for <%= @player.first_name + ' ' + @player.last_name %></h1>
+
+<% if @notice.presence %>
+  <%= content_tag :div, @notice, class: 'error' %>
+  <h3>Try again:</h3>
+  <%= render 'scorecards/add_scorecard_form' %>
+  <br>
+<% else %>
+  <h2>Scorecards</h2>
+  <%= render 'scorecard_card' %>
+<% end %>
+
+<%= link_to "Back to player", player_path(@player) %><br>
+<%= link_to "Back to tourney", tourney_path(@player.tourney_id) %><br>
+<%= link_to "Back to all tourneys", tourneys_path() %>

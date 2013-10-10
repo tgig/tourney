@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  sbs_round_id: 1
+  sbs_scorecard_id: 1
+  score_type_front_back_full: MyString
+  course_rating: 1
+  course_slope: 1
+  player_course_handicap: 1
+  raw_score: 1
+  handicap_adjusted_score: 1
+  stableford_score: 1
+  round_track_url: MyString
+  player_id: 
+
+two:
+  sbs_round_id: 1
+  sbs_scorecard_id: 1
+  score_type_front_back_full: MyString
+  course_rating: 1
+  course_slope: 1
+  player_course_handicap: 1
+  raw_score: 1
+  handicap_adjusted_score: 1
+  stableford_score: 1
+  round_track_url: MyString
+  player_id: 

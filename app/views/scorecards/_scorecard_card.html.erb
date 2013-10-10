@@ -1,0 +1,32 @@
+<% @scorecards.each do |scorecard_card| %>
+  <div><%= scorecard_card.score_type_front_back_full.upcase %> NINE</div>
+  <div>Course: <%= scorecard_card.course_name %></div>
+  <div>Addy: <%= scorecard_card.course_city + ', ' + scorecard_card.course_state %></div>
+  <div>Tee box: <%= scorecard_card.tee_box.humanize %></div>
+  <div>Total Score: <%= scorecard_card.raw_score %></div>
+  <div>Handicap Adj Score: <%= scorecard_card.handicap_adjusted_score %></div>
+  <div>Stableford Score: <%= scorecard_card.stableford_score %></div>
+  <hr />
+<% end %>
+
+<%= form_tag @path do %>
+  <% @scorecards.each do |scorecard_card| %>
+    <%= hidden_field_tag('scorecard[][sbs_scorecard_id]', scorecard_card.sbs_scorecard_id) %>
+    <%= hidden_field_tag('scorecard[][sbs_round_id]', scorecard_card.sbs_round_id) %>
+    <%= hidden_field_tag('scorecard[][course_name]', scorecard_card.course_name) %>
+    <%= hidden_field_tag('scorecard[][course_city]', scorecard_card.course_city) %>
+    <%= hidden_field_tag('scorecard[][course_state]', scorecard_card.course_state) %>
+    <%= hidden_field_tag('scorecard[][course_country]', scorecard_card.course_country) %>
+    <%= hidden_field_tag('scorecard[][tee_box]', scorecard_card.tee_box.humanize) %>
+    <%= hidden_field_tag('scorecard[][course_rating]', scorecard_card.course_rating) %>
+    <%= hidden_field_tag('scorecard[][course_slope]', scorecard_card.course_slope) %>
+    <%= hidden_field_tag('scorecard[][player_course_handicap]', scorecard_card.player_course_handicap) %>
+    <%= hidden_field_tag('scorecard[][score_type_front_back_full]', scorecard_card.score_type_front_back_full) %>
+    <%= hidden_field_tag('scorecard[][raw_score]', scorecard_card.raw_score) %>
+    <%= hidden_field_tag('scorecard[][handicap_adjusted_score]', scorecard_card.handicap_adjusted_score) %>
+    <%= hidden_field_tag('scorecard[][stableford_score]', scorecard_card.stableford_score) %>
+    <%= hidden_field_tag('scorecard[][round_track_url]', scorecard_card.round_track_url) %>
+    <%= hidden_field_tag('scorecard[][round_date]', scorecard_card.round_date) %>
+  <% end %>
+  <%= submit_tag("Add to tourney", :disable_with => "Submitting...") %>
+<% end %>

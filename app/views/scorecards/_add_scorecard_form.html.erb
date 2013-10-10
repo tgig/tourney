@@ -1,0 +1,11 @@
+<%= form_tag scorecard_scorecard_preview_path(@player.id), :id => 'preview_form' do %>
+  <%= radio_button_tag(:id_type, "round", true) %>
+  <%= label_tag(:id_type_round, "Round Id") %>
+  <%= radio_button_tag(:id_type, "scorecard") %>
+  <%= label_tag(:id_type_scorecard, "Scorecard Id") %>
+  <br>
+  <%= label_tag(:sbs_scorecard_round_id, 'Id:') %>
+  <%= text_field_tag(:sbs_scorecard_round_id) %>
+
+  <%= submit_tag("Search") %>
+<% end %>

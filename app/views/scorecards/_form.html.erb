@@ -1,0 +1,82 @@
+<p>Use this form to manually enter 9 holes of golf. Be sure to break full 18 holes rounds into two separate nine hole rounds.</p>
+
+<%= form_for(@path) do |f| %>
+  <%= f.hidden_field :player_handicap, :value => @player.handicap %>
+  <%= f.hidden_field :sbs_scorecard_id, :value => '0' %>
+  <%= f.hidden_field :sbs_round_id, :value => '0' %>
+  <p>
+    <%= f.label :score_type_front_back_full, "Round type (front/back)" %>
+    <br>
+
+    <%= f.select(:score_type_front_back_full, [['Select', nil], 'Front', 'Back']) %>
+  </p>
+  <p>
+    <%= f.label :course_name %>
+    <br>
+    <%= f.text_field :course_name %>
+  </p>
+  <p>
+    <%= f.label :course_city %>
+    <br>
+    <%= f.text_field :course_city %>
+  </p>
+  <p>
+    <%= f.label :course_state %>
+    <br>
+    <%= f.text_field :course_state %>
+  </p>
+  <p>
+    <%= f.label :course_country %>
+    <br>
+    <%= f.text_field :course_country %>
+  </p>
+  <p>
+    <%= f.label :tee_box, "Tee box played from" %>
+    <br>
+    <%= f.text_field :tee_box %>
+  </p>
+  <p>
+    <%= f.label :course_rating, "Rating (tee specific)" %>
+    <br>
+    <%= f.text_field :course_rating %>
+  </p>
+  <p>
+    <%= f.label :course_slope, 'Slope (tee specific)' %>
+    <br>
+    <%= f.text_field :course_slope %>
+  </p>
+  <p>
+    <%= f.label :player_course_handicap, "Player's course handicap (tee specific)" %>
+    <br>
+    <%= f.text_field :player_course_handicap %>
+  </p>
+  <p>
+    <%= f.label :raw_score %>
+    <br>
+    <%= f.text_field :raw_score %>
+  </p>
+  <p>
+    <%= f.label :handicap_adjusted_score %>
+    <br>
+    <%= f.text_field :handicap_adjusted_score %>
+  </p>
+  <p>
+    <%= f.label :stableford_score %>
+    <br>
+    <%= f.text_field :stableford_score %>
+  </p>
+  <p>
+    <%= f.label :round_track_url %>
+    <br>
+    <%= f.text_field :round_track_url %>
+  </p>
+  <p>
+    <%= f.label :round_date %>
+    <br>
+    <%= f.datetime_select :round_date, :ampm => true, :discard_hour => true, order: [:month, :day, :year] %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

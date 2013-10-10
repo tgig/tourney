@@ -1,0 +1,20 @@
+<% if @sbs_rounds['resultsCount'].to_i == 0 %>
+  <div>This player has no scorecards in the SBS system</div>
+<% else %>
+  <% rounds_shown = 0 %>
+  <% @sbs_rounds['roundTotals'].each do |round| %>
+    <% if Date.parse(round['inserted']) > @tourney.startdate %>
+      <% if rounds_shown == 0 %>
+        <h5>Rounds played after tourney start date of <%= @tourney.startdate.strftime("%m/%d/%Y") %></h5>
+      <% end %>
+      <% rounds_shown += 1 %>
+      <div>
+        <%= round['courseName'] %> - <%= round['adjustedGrossScore'] %>
+        <%= link_to 'Add to tourney', '#', :class => 'js-add-existing-sbs-scorecard', :data => {:round_id => round['roundId'] } %>
+      </div>
+    <% end %>
+  <% end %>
+  <% if rounds_shown == 0 %>
+    <div>This player has <%= @sbs_rounds['resultsCount'] %> scorecards in the SBS system, but none since this tourney started</div>
+  <% end %>
+<% end %>

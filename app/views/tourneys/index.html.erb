@@ -1,0 +1,34 @@
+<h1>Golf Tournaments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Startdate</th>
+      <th>Enddate</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tourneys.each do |tourney| %>
+      <tr>
+        <td><%= link_to tourney.name, tourney %></td>
+        <td><%= tourney.description %></td>
+        <td><%= tourney.startdate.strftime("%m/%d/%Y") %></td>
+        <td><%= tourney.enddate.strftime("%m/%d/%Y") %></td>
+        <td><%= link_to 'Edit', edit_tourney_path(tourney) %></td>
+        <td><%= link_to 'Delete', tourney, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Tourney', new_tourney_path %>
+<br />
+<%= link_to 'Home', controller: 'welcome' %>

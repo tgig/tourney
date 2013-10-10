@@ -1,0 +1,39 @@
+<%= form_for(@path) do |f| %>
+  <% if @player.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@player.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% @player.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= f.label :sbs_player_id, 'SBS Player Id' %>
+    <br />
+    <%= f.text_field :sbs_player_id %>
+    &nbsp;
+    <%= link_to 'Retrieve player info from SBS', '#', :id => 'lnk-get-sbs-player' %>
+  </p>
+  <p>
+    <%= f.label :first_name %>
+    <br />
+    <%= f.text_field :first_name %>
+  </p>
+  <p>
+    <%= f.label :last_name %>
+    <br />
+    <%= f.text_field :last_name %>
+  </p>
+  <p>
+    <%= f.label :handicap %>
+    <br />
+    <%= f.text_field :handicap %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

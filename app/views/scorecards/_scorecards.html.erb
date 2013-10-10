@@ -1,0 +1,39 @@
+<% if @player.scorecards.count == 0 %>
+  <div>This player has no scorecards entered into this tourney</div>
+<% else %>
+  <table>
+    <tr>
+      <th>SBS Round ID</th>
+      <th>SBS Scorecard ID</th>
+      <th>Course</th>
+      <th>Scorecard Type</th>
+      <th>Tee Box</th>
+      <th>Rating</th>
+      <th>Slope</th>
+      <th>Course Handicap</th>
+      <th>Raw Score</th>
+      <th>HCP Adjusted Score</th>
+      <th>Stableford Score</th>
+      <th>Round Track Page</th>
+    </tr>
+    <% @player.scorecards.each do |scorecard| %>
+      <tr>
+        <td><%= scorecard.sbs_round_id %></td>
+        <td><%= scorecard.sbs_scorecard_id %></td>
+        <td>
+          <%= scorecard.course_name %><br>
+          <%= scorecard.course_city + ', ' + scorecard.course_state %>
+        </td>
+        <td><%= scorecard.score_type_front_back_full %></td>
+        <td><%= scorecard.tee_box %></td>
+        <td><%= scorecard.course_rating %></td>
+        <td><%= scorecard.course_slope %></td>
+        <td><%= scorecard.player_course_handicap %></td>
+        <td><%= scorecard.raw_score %></td>
+        <td><%= scorecard.handicap_adjusted_score %></td>
+        <td><%= scorecard.stableford_score %></td>
+        <td><%= scorecard.round_track_url %></td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>

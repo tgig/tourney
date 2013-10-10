@@ -1,0 +1,27 @@
+<h1><%= @player.first_name + ' ' + @player.last_name %></h1>
+
+<table>
+  <tr>
+    <th>SbS ID</th>
+    <td><%= @player.sbs_player_id %></td>
+  </tr>
+  <tr>
+    <th>Handicap</th>
+    <td><%= @player.handicap %></td>
+  </tr>
+</table>
+
+<p><%= link_to "Back to Tourney", tourney_path(@player.tourney_id) %></p>
+
+<h2>Scorecards entered in tourney</h2>
+<%= render 'scorecards/scorecards' %>
+
+<h2>Recent SbS rounds not entered in tourney</h2>
+<%= render 'sbs_rounds_not_in_tourney' %>
+
+<h2>Import SBS scorecard</h2>
+<%= render 'scorecards/add_scorecard_form' %>
+
+<h2>Manually add scorecard</h2>
+<%= render 'scorecards/form' %>
+

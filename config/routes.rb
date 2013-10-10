@@ -1,9 +1,14 @@
 Contest::Application.routes.draw do
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
+  get "welcome/index"
+  resources :tourneys, shallow: true do
+    resources :players, shallow: true do
+      resources :scorecards, shallow: true do
+        post 'preview'
+      end
+    end
+  end
 
-  # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'welcome#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -39,7 +44,7 @@ Contest::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'

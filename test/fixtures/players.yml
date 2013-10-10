@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  sbs_player_id: 1
+  first_name: MyString
+  last_name: MyString
+  handicap: 9.99
+  tourney_id: 
+
+two:
+  sbs_player_id: 1
+  first_name: MyString
+  last_name: MyString
+  handicap: 9.99
+  tourney_id: 

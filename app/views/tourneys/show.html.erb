@@ -1,0 +1,69 @@
+<p id="notice"><%= params[:notice] %></p>
+
+<h1><%= @tourney.name %> tourney</h1>
+
+<table>
+<tr>
+  <th>Description:</th>
+  <td><%= @tourney.description %></td>
+</tr>
+<tr>
+  <th>Startdate:</th>
+  <td><%= @tourney.startdate.strftime("%m/%d/%Y") %></td>
+</tr>
+<tr>
+  <th>Enddate:</th>
+  <td><%= @tourney.enddate.strftime("%m/%d/%Y") %></td>
+</tr>
+</table>
+<p><%= link_to 'Edit tourney info', edit_tourney_path(@tourney) %>&nbsp;|&nbsp;<%= link_to 'Back to all tourneys', tourneys_path %></p>
+
+<h2>Leaderboard</h2>
+<% if @tourney.scorecards.count > 0 %>
+  <table>
+    <tr>
+      <th>Player</th>
+      <th>Course HCP</th>
+      <th>Stableford Score</th>
+      <th>Round Date</th>
+    </tr>
+    <% @tourney.scorecards.each do |score| %>
+      <tr>
+        <td><%= score.player.first_name + ' ' + score.player.last_name %></td>
+        <td><%= score.player_course_handicap %></td>
+        <td align="center"><%= score.stableford_score %></td>
+        <td><%= score.round_date.strftime('%m/%d/%Y') %></td>
+      </tr>
+    <% end %>
+  </table>
+<% else %>
+  <p>No scorecards have been entered into this tourney</p>
+<% end %>
+
+<h2>Players in Tourney</h2>
+<% if @tourney.players.count > 0 %>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>SBS Id</th>
+      <th>Handicap</th>
+      <th>Tourney entries</th>
+    </tr>
+  <% @tourney.players.each do |player| %>
+    <tr>
+      <td><%= link_to player.first_name + " " + player.last_name, player_path(player.id) %></td>
+      <td><%= player.sbs_player_id %></td>
+      <td><%= player.handicap %></td>
+      <td><%= player.scorecards.count %></td>
+      <td><%= link_to "Edit", edit_player_path(player.id) %></td>
+      <td><%= link_to 'Delete', player, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+<% else %>
+  <p>No players are entered into this tournament yet</p>
+<% end %>
+</table>
+
+<h2>Add a new Player</h2>
+<%= render 'players/form' %>
+
